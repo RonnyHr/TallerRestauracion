@@ -1,0 +1,47 @@
+{% extends 'gestion/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Nueva Intervención</h2>
+
+<form action="/intervenciones/guardar" method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label class="form-label">Etnomusicólogo:</label>
+        <select name="etnomusicologo" class="form-select" required>
+            <option value="" disabled selected>Seleccione un etnomusicólogo</option>
+            {% for etno in etnos %}
+                <option value="{{ etno.id }}">{{ etno.nombre }} ({{ etno.codigo_trabajador }})</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Museo:</label>
+        <select name="museo" class="form-select" required>
+            <option value="" disabled selected>Seleccione un museo</option>
+            {% for museo in museos %}
+                <option value="{{ museo.id }}">{{ museo.nombre }} - {{ museo.ciudad }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Descripción:</label>
+        <textarea name="descripcion" class="form-control" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Fecha:</label>
+        <input type="date" name="fecha" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Duración (días):</label>
+        <input type="number" name="duracion_dias" class="form-control" min="1" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Intervención</button>
+    <a href="/intervenciones" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
