@@ -1,0 +1,30 @@
+{% extends 'gestion/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Listado de Etnomusicólogos</h2>
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
+<a href="/etnomusicologos/nuevo" class="btn btn-success mb-3">Agregar Etnomusicólogo</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Especialidad</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+</table>
+{% endblock %}
