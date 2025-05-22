@@ -15,3 +15,15 @@ def listaEtnomusicologos(request):
 def listaIntervenciones(request):
     intervenciones = Intervencion.objects.all()
     return render(request, "intervencion.html", {'intervenciones': intervenciones})
+
+#formularios nuevos
+def nuevoMuseo(request):
+    return render(request, "agregarMuseo.html")
+
+def nuevoEtnomusicologo(request):
+    return render(request, "agregarEtnomusicologo.html")
+
+def nuevaIntervencion(request):
+    museos = Museo.objects.all()
+    etnos = Etnomusicologo.objects.all()
+    return render(request, "agregarIntervencion.html", {"museos": museos, "etnos": etnos})
