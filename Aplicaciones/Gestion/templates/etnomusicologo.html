@@ -24,7 +24,24 @@
         </tr>
     </thead>
     <tbody>
-      
+        {% for etno in etnomusicologos %}
+        <tr>
+            <td>{{ etno.id }}</td>
+            <td>{{ etno.codigo_trabajador }}</td>
+            <td>{{ etno.nombre }}</td>
+            <td>{{ etno.especialidad }}</td>
+            <td>{{ etno.email }}</td>
+            <td>{{ etno.telefono }}</td>
+            <td>
+                <a href="/etnomusicologos/editar/{{ etno.id }}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="/etnomusicologos/eliminar/{{ etno.id }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar este etnomusicólogo?')">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7" class="text-center">No hay etnomusicólogos registrados.</td>
+        </tr>
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}
