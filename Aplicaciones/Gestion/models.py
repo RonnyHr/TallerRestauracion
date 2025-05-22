@@ -23,3 +23,16 @@ class Etnomusicologo(models.Model):
 
     def _str_(self):
         return f"{self.nombre} - {self.codigo_trabajador}"
+    
+
+#Intervencion
+    
+class Intervencion(models.Model):
+    etnomusicologo = models.ForeignKey(Etnomusicologo, on_delete=models.CASCADE, related_name='intervenciones')
+    museo = models.ForeignKey(Museo, on_delete=models.CASCADE, related_name='intervenciones')
+    descripcion = models.TextField()
+    fecha = models.DateField()
+    duracion_dias = models.PositiveIntegerField()
+
+    def _str_(self):
+        return f"{self.etnomusicologo.nombre} → {self.museo.nombre} ({self.fecha})"
