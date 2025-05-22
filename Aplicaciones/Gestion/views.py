@@ -66,3 +66,17 @@ def guardarIntervencion(request):
     )
     messages.success(request, "INTERVENCIÓN GUARDADA EXITOSAMENTE")
     return redirect('/intervenciones')
+
+#Eliminar
+
+def eliminarMuseo(request, id):
+    Museo.objects.get(id=id).delete()
+    return redirect('/museos')
+
+def eliminarEtnomusicologo(request, id):
+    Etnomusicologo.objects.get(id=id).delete()
+    return redirect('/etnomusicologos')
+
+def eliminarIntervencion(request, id):
+    Intervencion.objects.get(id=id).delete()
+    return redirect('/intervenciones')
