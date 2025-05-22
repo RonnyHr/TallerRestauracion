@@ -9,3 +9,12 @@ urlpatterns = [
     path('eliminarMuseo/<int:id>', views.eliminarMuseo),
     path('editarMuseo/<int:id>', views.editarMuseo),
     path('actualizarMuseo', views.actualizarMuseo),
+
+    # RUTAS PARA ETNOMUSICOLOGO
+    path('etnomusicologos', views.listaEtnomusicologos),
+    path('nuevoEtnomusicologo', views.nuevoEtnomusicologo),
+    path('guardarEtnomusicologo', views.guardarEtnomusicologo),
+    path('eliminarEtnomusicologo/<int:id>', views.eliminarEtnomusicologo),
+    path('editarEtnomusicologo/<int:id>', views.editarEtnomusicologo),
+    path('actualizarEtnomusicologo', views.actualizarEtnomusicologo),
+]
