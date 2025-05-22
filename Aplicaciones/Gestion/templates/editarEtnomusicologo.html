@@ -1,0 +1,35 @@
+{% extends 'gestion/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Editar Etnomusicólogo</h2>
+
+<form method="POST" action="/etnomusicologos/actualizar">
+    {% csrf_token %}
+    
+    <input type="hidden" name="id" value="{{ etno.id }}">
+
+    <div class="mb-3">
+        <label class="form-label">Código de Trabajador</label>
+        <input type="text" name="codigo_trabajador" value="{{ etno.codigo_trabajador }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" name="nombre" value="{{ etno.nombre }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Especialidad</label>
+        <input type="text" name="especialidad" value="{{ etno.especialidad }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" value="{{ etno.email }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Teléfono</label>
+        <input type="text" name="telefono" value="{{ etno.telefono }}" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+    <a href="/etnomusicologos" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
