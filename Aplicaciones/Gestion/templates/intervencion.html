@@ -24,7 +24,20 @@
         </tr>
     </thead>
     <tbody>
-        
+        {% for intervencion in intervenciones %}
+        <tr>
+            <td>{{ intervencion.id }}</td>
+            <td>{{ intervencion.etnomusicologo.nombre }}</td>
+            <td>{{ intervencion.museo.nombre }}</td>
+            <td>{{ intervencion.descripcion }}</td>
+            <td>{{ intervencion.fecha }}</td>
+            <td>{{ intervencion.duracion_dias }}</td>
+            <td>
+                <a href="/intervenciones/editar/{{ intervencion.id }}" class="btn btn-sm btn-primary">Editar</a>
+                <a href="/intervenciones/eliminar/{{ intervencion.id }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar esta intervención?');">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}
