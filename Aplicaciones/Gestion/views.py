@@ -99,3 +99,38 @@ def editarIntervencion(request, id):
         'museos': museos,
         'etnos': etnos
     })
+
+#Actualizar
+
+def actualizarMuseo(request):
+    museo = Museo.objects.get(id=request.POST["id"])
+    museo.nombre = request.POST["nombre"]
+    museo.pais = request.POST["pais"]
+    museo.ciudad = request.POST["ciudad"]
+    museo.direccion = request.POST["direccion"]
+    museo.fundado_en = request.POST["fundado_en"]
+    museo.save()
+    messages.success(request, "MUSEO ACTUALIZADO EXITOSAMENTE")
+    return redirect('/museos')
+
+def actualizarEtnomusicologo(request):
+    etno = Etnomusicologo.objects.get(id=request.POST["id"])
+    etno.codigo_trabajador = request.POST["codigo_trabajador"]
+    etno.nombre = request.POST["nombre"]
+    etno.especialidad = request.POST["especialidad"]
+    etno.email = request.POST["email"]
+    etno.telefono = request.POST["telefono"]
+    etno.save()
+    messages.success(request, "ETNOMUSICOLOGO ACTUALIZADO EXITOSAMENTE")
+    return redirect('/etnomusicologos')
+
+def actualizarIntervencion(request):
+    intervencion = Intervencion.objects.get(id=request.POST["id"])
+    intervencion.etnomusicologo = Etnomusicologo.objects.get(id=request.POST["etnomusicologo"])
+    intervencion.museo = Museo.objects.get(id=request.POST["museo"])
+    intervencion.descripcion = request.POST["descripcion"]
+    intervencion.fecha = request.POST["fecha"]
+    intervencion.duracion_dias = request.POST["duracion_dias"]
+    intervencion.save()
+    messages.success(request, "INTERVENCIÓN ACTUALIZADA EXITOSAMENTE")
+    return redirect('/intervenciones')
