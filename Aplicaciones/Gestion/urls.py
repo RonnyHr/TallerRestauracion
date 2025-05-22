@@ -17,4 +17,12 @@ urlpatterns = [
     path('eliminarEtnomusicologo/<int:id>', views.eliminarEtnomusicologo),
     path('editarEtnomusicologo/<int:id>', views.editarEtnomusicologo),
     path('actualizarEtnomusicologo', views.actualizarEtnomusicologo),
+
+  # RUTAS PARA INTERVENCION
+    path('intervenciones', views.listaIntervenciones),
+    path('nuevaIntervencion', views.nuevaIntervencion),
+    path('guardarIntervencion', views.guardarIntervencion),
+    path('eliminarIntervencion/<int:id>', views.eliminarIntervencion),
+    path('editarIntervencion/<int:id>', views.editarIntervencion),
+    path('actualizarIntervencion', views.actualizarIntervencion),
 ]
