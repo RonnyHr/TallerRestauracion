@@ -15,6 +15,20 @@
             <th>Acciones</th>
         </tr>
     </thead>
-   
+    <tbody>
+        {% for museo in museos %}
+        <tr>
+            <td>{{ museo.nombre }}</td>
+            <td>{{ museo.pais }}</td>
+            <td>{{ museo.ciudad }}</td>
+            <td>{{ museo.direccion }}</td>
+            <td>{{ museo.fundado_en }}</td>
+            <td>
+                <a href="/museos/editar/{{ museo.id }}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="/museos/eliminar/{{ museo.id }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este museo?')">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 {% endblock %}
