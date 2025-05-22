@@ -1,0 +1,52 @@
+{% extends 'gestion/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Editar Intervención</h2>
+
+<form method="POST" action="/intervenciones/actualizar/">
+  {% csrf_token %}
+  <input type="hidden" name="id" value="{{ intervencion.id }}">
+
+  <div class="mb-3">
+    <label for="etnomusicologo" class="form-label">Etnomusicólogo</label>
+    <select class="form-select" name="etnomusicologo" required>
+      <option value="">Seleccione un etnomusicólogo</option>
+      {% for etno in etnos %}
+      <option value="{{ etno.id }}" {% if intervencion.etnomusicologo.id == etno.id %}selected{% endif %}>
+        {{ etno.nombre }}
+      </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="museo" class="form-label">Museo</label>
+    <select class="form-select" name="museo" required>
+      <option value="">Seleccione un museo</option>
+      {% for museo in museos %}
+      <option value="{{ museo.id }}" {% if intervencion.museo.id == museo.id %}selected{% endif %}>
+        {{ museo.nombre }}
+      </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="descripcion" class="form-label">Descripción</label>
+    <textarea class="form-control" name="descripcion" rows="3" required>{{ intervencion.descripcion }}</textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="fecha" class="form-label">Fecha</label>
+    <input type="date" class="form-control" name="fecha" value="{{ intervencion.fecha }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="duracion_dias" class="form-label">Duración (días)</label>
+    <input type="number" class="form-control" name="duracion_dias" value="{{ intervencion.duracion_dias }}" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Actualizar Intervención</button>
+  <a href="/intervenciones" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
