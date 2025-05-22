@@ -80,3 +80,22 @@ def eliminarEtnomusicologo(request, id):
 def eliminarIntervencion(request, id):
     Intervencion.objects.get(id=id).delete()
     return redirect('/intervenciones')
+
+#Editar 
+def editarMuseo(request, id):
+    museo = Museo.objects.get(id=id)
+    return render(request, "editarMuseo.html", {'museo': museo})
+
+def editarEtnomusicologo(request, id):
+    etno = Etnomusicologo.objects.get(id=id)
+    return render(request, "editarEtnomusicologo.html", {'etno': etno})
+
+def editarIntervencion(request, id):
+    intervencion = Intervencion.objects.get(id=id)
+    museos = Museo.objects.all()
+    etnos = Etnomusicologo.objects.all()
+    return render(request, "editarIntervencion.html", {
+        'intervencion': intervencion,
+        'museos': museos,
+        'etnos': etnos
+    })
