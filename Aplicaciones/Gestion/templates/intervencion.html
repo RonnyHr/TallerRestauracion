@@ -1,0 +1,30 @@
+{% extends 'gestion/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Intervenciones Registradas</h2>
+
+<a href="/intervenciones/nuevo" class="btn btn-success mb-3">Nueva Intervención</a>
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-info">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
+<table class="table table-bordered table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>Etnomusicólogo</th>
+            <th>Museo</th>
+            <th>Descripción</th>
+            <th>Fecha</th>
+            <th>Duración (días)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+</table>
+{% endblock %}
